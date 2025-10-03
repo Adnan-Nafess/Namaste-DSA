@@ -16,4 +16,5 @@ function removeDuplicatesElement(nums) {
 let arr = [0,0,1,1,1,2,2,3,3,4];
 let result = removeDuplicatesElement(arr);
 
+console.log(result);
 console.log(arr.slice(0, result));  // Output => [ 0, 1, 2, 3, 4 ] 
