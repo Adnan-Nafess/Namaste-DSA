@@ -12,9 +12,8 @@
 // Input: nums = [], target = 0
 // Output: [-1,-1]
 
-
 // 1st Approach
-
+/*
 function searchRange(arr, target) {
   let left = 0;
   let right = arr.length -1;
@@ -54,9 +53,49 @@ function searchRange(arr, target) {
   }
 
   return ans;
+} */
+
+// 2nd Approach
+
+function searchRange(arr, target) {
+  let l = 0;
+  let r = arr.length - 1;
+  let ans = [-1, -1];
+
+  while (l <= r) {
+    let m = Math.floor(l + (r - l) / 2);
+
+    if (arr[m] === target) {
+      ans[0] = m;
+      r = m - 1;
+    } else if (arr[m] < target) {
+      l = m + 1;
+    } else {
+      r = m - 1;
+    }
+  }
+
+  l = 0;
+  r = arr.length - 1;
+
+  while (l <= r) {
+    let m = Math.floor(l + (r - l) / 2);
+
+    if (arr[m] === target) {
+      ans[1] = m;
+      l = m + 1;
+    } else if (arr[m] > target) {
+      r = m - 1;
+    } else {
+      l = m + 1;
+    }
+  }
+
+  return ans;
 }
 
-let arr = [5,7,7,8,8,10], target = 8;
+let arr = [5, 7, 7, 8, 8, 10],
+  target = 8;
 // let arr = [5,7,7,8,8,10], target = 6;
 // let arr = [], target = 0;
 
